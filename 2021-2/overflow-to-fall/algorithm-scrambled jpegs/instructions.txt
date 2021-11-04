@@ -1,0 +1,35 @@
+1. Arrange all bytes into columns of five, and rows of X:
+   0  1  2  3  4
+0  A  B  C  D  E
+1  F  G  H  I  J
+2  K  L  M  N  O
+3  P  Q  R  S  T
+4  U  V  W  X  Y
+X  .  .  .  .  .
+
+2. Swap each column such that 0 1 2 3 4 -> 4 2 3 1 0:
+   0  1  2  3  4                       4  2  3  1  0
+0  A  B  C  D  E                    0  E  C  D  B  A
+1  F  G  H  I  J                    1  J  H  I  G  F
+2  K  L  M  N  O       ----->       2  O  M  N  L  K
+3  P  Q  R  S  T                    3  T  R  S  Q  P
+4  U  V  W  X  Y                    4  Y  W  X  V  U
+X  .  .  .  .  .                    X  .  .  .  .  .
+
+3. Swap each odd and even row such that the first row is 0 and is even. Any value not flipped will retain their original position:
+   0  1  2  3  4                       0  1  2  3  4
+0  E  C  D  B  A (Even)             1  J  H  I  G  F (Odd)
+1  J  H  I  G  F (Odd)              0  E  C  D  B  A (Even)
+2  O  M  N  L  K (Even)   ----->    3  T  R  S  Q  P (Odd)
+3  T  R  S  Q  P (Odd)              2  O  M  N  L  K (Even)
+4  Y  W  X  V  U (Even)             5  .  .  .  .  . (Odd)
+X  .  .  .  .  . (Odd)              4  Y  W  X  V  U (Even)
+
+4. Shift every even row to the right twice, and odd rows to the left once, such that the first row is 0 and is even:
+   4  2  3  1  0                       4  2  3  1  0
+0  J  H  I  G  F (Even)             0  G  F  J  H  I (Even) -> 2
+1  E  C  D  B  A (Odd)              1  C  D  B  A  E (Odd)  <- 1
+2  T  R  S  Q  P (Even)   ----->    2  Q  P  T  R  S (Even) -> 2
+3  O  M  N  L  K (Odd)              3  M  N  L  K  O (Odd)  <- 1
+4  1  2  3  4  5 (Even)             4  4  5  1  2  3 (Even) -> 2
+5  Y  W  X  V  U (Odd)              5  W  X  V  U  Y (Odd)  <- 1
