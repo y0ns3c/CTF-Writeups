@@ -1,4 +1,4 @@
-# Yonsei Security Club (YSC)가 참가산 CTF 이벤트의 Writeup
+# Yonsei Security Club (YSC)가 참가한 CTF 이벤트의 Writeup
 
 https://ctftime.org/team/157926
 
