@@ -1,0 +1,176 @@
+00000000000010e0 <.text>: // main???
+    10e0:       endbr64
+    10e4:       push   rbx
+
+    10e5:       mov    rdi,QWORD PTR [rip+0x2f44]        # 4030 <stdin@@GLIBC_2.2.5>
+    10ec:       xor    esi,esi
+    10ee:       call   10b0 <setbuf@plt>
+
+    10f3:       mov    rdi,QWORD PTR [rip+0x2f26]        # 4020 <stdout@@GLIBC_2.2.5>
+    10fa:       xor    esi,esi
+    10fc:       call   10b0 <setbuf@plt>
+
+    1101:       mov    rdi,QWORD PTR [rip+0x2f38]        # 4040 <stderr@@GLIBC_2.2.5>
+    1108:       xor    esi,esi
+    110a:       call   10b0 <setbuf@plt>
+    110f:       lea    rdi,[rip+0xeee]        # 2004 <strfry@plt+0xf34>
+    1116:       call   1090 <puts@plt>
+
+    111b:       xor    edi,edi
+    111d:       xor    r9d,r9d
+    1120:       mov    edx,0x7
+    1125:       mov    esi,0x1000
+    112a:       mov    r8d,0xffffffff
+    1130:       mov    ecx,0x22
+    1135:       call   10a0 <mmap@plt>
+
+    113a:       xor    edi,edi
+    113c:       mov    edx,0x1000
+    1141:       mov    rsi,rax
+    1144:       mov    rbx,rax
+    1147:       call   10c0 <read@plt>
+
+    114c:       test   eax,eax
+    114e:       jle    1180 <strfry@plt+0xb0>
+    1150:       sub    eax,0x1
+    1153:       mov    rdx,rbx                // rbx is ptr to buf
+    1156:       lea    rcx,[rbx+rax*1+0x1]    // rcx is end of buf
+    115b:       jmp    1169 <strfry@plt+0x99>
+    115d:       nop    DWORD PTR [rax]
+
+    1160:       add    rdx,0x1
+    1164:       cmp    rdx,rcx
+    1167:       je     1180 <strfry@plt+0xb0>
+    1169:       movzx  eax,BYTE PTR [rdx]
+    116c:       sub    eax,0x30
+    116f:       cmp    al,0x4e
+    1171:       jbe    1160 <strfry@plt+0x90>
+
+    1173:       lea    rdi,[rip+0xea3]        # 201d <strfry@plt+0xf4d>
+    117a:       pop    rbx
+    117b:       jmp    1090 <puts@plt>
+
+    1180:       lea    rdi,[rip+0xe9c]        # 2023 <strfry@plt+0xf53>
+    1187:       call   1090 <puts@plt>
+    118c:       mov    rdi,rbx
+    118f:       call   10d0 <strfry@plt>
+    1194:       jmp    rbx
+    1196:       nop    WORD PTR cs:[rax+rax*1+0x0]
+
+
+00000000000011a0 <_start>:
+    11a0:       endbr64
+    11a4:       xor    ebp,ebp
+    11a6:       mov    r9,rdx
+    11a9:       pop    rsi
+    11aa:       mov    rdx,rsp
+    11ad:       and    rsp,0xfffffffffffffff0
+    11b1:       push   rax
+    11b2:       push   rsp
+    11b3:       lea    r8,[rip+0x146]        # 1300 <strfry@plt+0x230>
+    11ba:       lea    rcx,[rip+0xcf]        # 1290 <strfry@plt+0x1c0>
+    11c1:       lea    rdi,[rip+0xffffffffffffff18]        # 10e0 <strfry@plt+0x10>
+    11c8:       call   QWORD PTR [rip+0x2e12]        # 3fe0 <strfry@plt+0x2f10>
+    11ce:       hlt
+    11cf:       nop
+
+
+00000000000011d0 <deregister_tm_clones>:
+    11d0:       lea    rdi,[rip+0x2e39]        # 4010 <strfry@plt+0x2f40>
+    11d7:       lea    rax,[rip+0x2e32]        # 4010 <strfry@plt+0x2f40>
+    11de:       cmp    rax,rdi
+    11e1:       je     11f8 <strfry@plt+0x128>
+    11e3:       mov    rax,QWORD PTR [rip+0x2dee]        # 3fd8 <strfry@plt+0x2f08>
+    11ea:       test   rax,rax
+    11ed:       je     11f8 <strfry@plt+0x128>
+    11ef:       jmp    rax
+    11f1:       nop    DWORD PTR [rax+0x0]
+    11f8:       ret
+    11f9:       nop    DWORD PTR [rax+0x0]
+
+
+0000000000001200 <register_tm_clones>:
+    1200:       lea    rdi,[rip+0x2e09]        # 4010 <strfry@plt+0x2f40>
+    1207:       lea    rsi,[rip+0x2e02]        # 4010 <strfry@plt+0x2f40>
+    120e:       sub    rsi,rdi
+    1211:       mov    rax,rsi
+    1214:       shr    rsi,0x3f
+    1218:       sar    rax,0x3
+    121c:       add    rsi,rax
+    121f:       sar    rsi,1
+    1222:       je     1238 <strfry@plt+0x168>
+    1224:       mov    rax,QWORD PTR [rip+0x2dc5]        # 3ff0 <strfry@plt+0x2f20>
+    122b:       test   rax,rax
+    122e:       je     1238 <strfry@plt+0x168>
+    1230:       jmp    rax
+    1232:       nop    WORD PTR [rax+rax*1+0x0]
+    1238:       ret
+    1239:       nop    DWORD PTR [rax+0x0]
+
+
+0000000000001240 <__do_global_dtors_aux>:
+    1240:       endbr64
+    1244:       cmp    BYTE PTR [rip+0x2dfd],0x0        # 4048 <stderr@@GLIBC_2.2.5+0x8>
+    124b:       jne    1278 <strfry@plt+0x1a8>
+    124d:       push   rbp
+    124e:       cmp    QWORD PTR [rip+0x2da2],0x0        # 3ff8 <strfry@plt+0x2f28>
+    1256:       mov    rbp,rsp
+    1259:       je     1267 <strfry@plt+0x197>
+    125b:       mov    rdi,QWORD PTR [rip+0x2da6]        # 4008 <strfry@plt+0x2f38>
+    1262:       call   1080 <__cxa_finalize@plt>
+    1267:       call   11d0 <strfry@plt+0x100>
+    126c:       mov    BYTE PTR [rip+0x2dd5],0x1        # 4048 <stderr@@GLIBC_2.2.5+0x8>
+    1273:       pop    rbp
+    1274:       ret
+    1275:       nop    DWORD PTR [rax]
+    1278:       ret
+    1279:       nop    DWORD PTR [rax+0x0]
+
+
+0000000000001280 <frame_dummy>:
+    1280:       endbr64
+    1284:       jmp    1200 <strfry@plt+0x130>
+    1289:       nop    DWORD PTR [rax+0x0]
+
+
+0000000000001290 <__libc_csu_init>:
+    1290:       endbr64
+    1294:       push   r15
+    1296:       lea    r15,[rip+0x2afb]        # 3d98 <strfry@plt+0x2cc8>
+    129d:       push   r14
+    129f:       mov    r14,rdx
+    12a2:       push   r13
+    12a4:       mov    r13,rsi
+    12a7:       push   r12
+    12a9:       mov    r12d,edi
+    12ac:       push   rbp
+    12ad:       lea    rbp,[rip+0x2aec]        # 3da0 <strfry@plt+0x2cd0>
+    12b4:       push   rbx
+    12b5:       sub    rbp,r15
+    12b8:       sub    rsp,0x8
+    12bc:       call   1000 <__cxa_finalize@plt-0x80>
+    12c1:       sar    rbp,0x3
+    12c5:       je     12e6 <strfry@plt+0x216>
+    12c7:       xor    ebx,ebx
+    12c9:       nop    DWORD PTR [rax+0x0]
+    12d0:       mov    rdx,r14
+    12d3:       mov    rsi,r13
+    12d6:       mov    edi,r12d
+    12d9:       call   QWORD PTR [r15+rbx*8]
+    12dd:       add    rbx,0x1
+    12e1:       cmp    rbp,rbx
+    12e4:       jne    12d0 <strfry@plt+0x200>
+    12e6:       add    rsp,0x8
+    12ea:       pop    rbx
+    12eb:       pop    rbp
+    12ec:       pop    r12
+    12ee:       pop    r13
+    12f0:       pop    r14
+    12f2:       pop    r15
+    12f4:       ret
+    12f5:       data16 nop WORD PTR cs:[rax+rax*1+0x0]
+
+
+0000000000001300 <__libc_csu_fini>:
+    1300:       endbr64
+    1304:       ret
