@@ -45,7 +45,7 @@ PIE:      PIE enabled           # 실행 시 코드의 주소가 랜덤이다
 
 그렇게 정리한 결과가 [disasm.txt](disasm.txt) 이다.
 
-#### 어셈블리를 C 언어로 리버싱
+#### 어셈블리를 C 언어로 리버싱 ([reverse.c](reverse.c))
 
 ```c
 #define _GNU_SOURCE
